@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>爱心</title>
+  <style type="text/css">
+
+     *{
+       padding: 0;
+       margin: 0;
+     }
+     .center {
+       width: 300px;
+       height: 20px;
+       color:#a9a9a9;
+       align:center;
+       padding-left:180px;
+       padding-bottom:50px;
+       padding-right:20px;
+       padding-top:10px;"
+     }
+    body{
+
+
+      background-color: pink;
+    }
+    #frame{
+
+
+      position: relative;
+      width: 400px;
+      height: 300px;
+      margin: 250px auto;
+    }
+    .left,.right{
+
+
+      top: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+    .left{
+
+
+      left: 35px;
+
+    }
+    .right{
+
+
+      right: 35px;
+      z-index: -1;
+    }
+    .bottom{
+
+
+      bottom: 36px;
+      left: 100px;
+      width: 200px;
+      height: 200px;
+      transform: rotate(45deg);
+      z-index: -1;
+
+    }
+    .heart{
+
+
+      position: absolute;
+      box-shadow:0 0 40px #d5093c;
+      animation: beat .8s ease infinite normal;
+      background: linear-gradient(-90deg, #F50A45 0%, #d5093c 40%);
+    }
+    @keyframes beat {
+
+
+      0%{
+
+
+        transform: scale(1) rotate(225deg);
+        box-shadow:0 0 40px #d5093c;
+      }
+      50%{
+
+
+        transform: scale(1.1) rotate(225deg);
+        box-shadow: 0 0 70px #d5093c;
+      }
+      100%{
+
+
+        transform: scale(1) rotate(225deg);
+        box-shadow: 0 0 40px #d5093c;;
+      }
+    }
+    </style>
+</head>
+<div>
+<body>
+<div class="center">
+  <h1>送你一颗小红心~</h1>
+  <br><h2>一颗跳动的爱心</h2>
+  <br><h3>懒得再加元素了</h3>
+  <br><h4>只是向你展示一下可以挂网</h4>
+</div>
+<script type="text/javascript " src="aixinmanping.js"></script>
+<div>
+  <div id="frame">
+    <div class="heart left"></div>
+    <div class="heart right"></div>
+    <div class="heart bottom"></div>
+  </div>
+</div>
+</body>
+</div>
+</html>

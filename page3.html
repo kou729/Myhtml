@@ -13,11 +13,124 @@
     }
     canvas {
       position: absolute;
+      left:200px;
+      top:20px;
       width: 100%;
       height: 100%;
-    }</style>
+    }
+    .center {
+      width: 300px;
+      height: 100px;
+      color:#a9a9a9;
+      align:center;
+      padding-left:180px;
+      padding-bottom:50px;
+      padding-right:20px;
+      padding-top:10px;"
+    }
+
+
+    #donghua{
+      width: 300px;
+      height: 100px;
+      margin: 10px auto;
+      text-align: left;
+      line-height: 100px;
+      font-size: 30px;
+      position: relative;
+      transition: color 1s;
+      /* z-index: 1; */
+    }
+    div:hover{
+      color: yellow;
+    }
+    /* 伪元素的相同属性 */
+    div::after{
+      z-index: -1;
+      width: 200px;
+      height: 100px;
+      background-color: pink;
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0px;
+
+    }
+    /* 第一个div */
+    .one:hover::after{
+      transform:scale(1,1) ;
+      transform-origin: left;
+    }
+    .one::after{
+      transition: transform 1s;
+      transform: scale(0,1);
+      transform-origin:right;
+    }
+    /* 第二个div */
+    .two:hover::after{
+      transform: scale(1);
+      transform-origin: left top;
+    }
+    .two::after{
+      transition: transform 1s;
+      transform:scale(0);
+      transform-origin: right bottom;
+    }
+    /* 第三个div */
+    .three:hover::after{
+      transform: scale(1);
+      transform-origin: top center;
+    }
+    .three::after{
+      transition:transform 1s ;
+      transform: scale(0);
+      transform-origin: bottom center;
+    }
+
+div#wenzi{
+  color: #666;
+
+}
+
+
+    div#roll{
+      width:200px;
+      height:100px;
+      background-color:#666;
+      color:#fff;
+      position:absolute;
+    }
+
+
+  </style>
 </head>
 <body>
+<div class="center">
+  <h1>次の試験日のカウントダウン</h1>
+  <h2 id="divdown1"></h2>
+</div>
+<div>
+  <script language="javascript" type="text/javascript">
+    var interval = 1000;
+    function ShowCountDown(year,month,day,divname)
+    {
+      var now = new Date();
+      var endDate = new Date(year, month-1, day);
+      var leftTime=endDate.getTime()-now.getTime();
+      var leftsecond = parseInt(leftTime/1000);
+//var day1=parseInt(leftsecond/(24*60*60*6));
+      var day1=Math.floor(leftsecond/(60*60*24));
+      var hour=Math.floor((leftsecond-day1*24*60*60)/3600);
+      var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60);
+      var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60);
+      var cc = document.getElementById(divname);
+      cc.innerHTML = "Kouyan注意する、次の試験日7月9日："+year+"年"+month+"月"+day+"まであと："+day1+"日"+hour+"時"+minute+"分"+second+"秒";
+    }
+    window.setInterval(function(){ShowCountDown(2022,7,9,'divdown1');}, interval);
+  </script>
+</div>
+
+<div>
 <script type="text/javascript " src="js/aixinmanping.js"></script>
 <canvas id="pinkboard"></canvas>
 
@@ -258,6 +371,56 @@
       render();
     }, 10);
   })(document.getElementById('pinkboard'));</script>
+</div>
+
+
+
+<div id = donghua>
+<div class="one">よい 成績 をあげる</div>
+<div class="two">よい 成績 をあげる</div>
+<div class="three">よい 成績 をあげる</div>
+</div>
+
+
+
+
+
+
+<div id="wenzi">
+  <div><h2>試験 はうまくいった!</h2>
+    <br><h3>マウスをハートの 近く まで 移動 する</h3>
+    <button><a href="page4.html" target="_blank">Touch me</a></button></div>
+</div>
+<div id="roll">試験  頑張っ て！！！<br />真由ちゃん</div>
+<script type="text/javascript">
+  var ggRoll = {
+    roll: document.getElementById("roll"),
+    speed: 20,
+    statusX: 1,
+    statusY: 1,
+    x: 100,
+    y: 300,
+    winW: document.documentElement.clientWidth - document.getElementById("roll").offsetWidth,
+    winH: document.documentElement.clientHeight - document.getElementById("roll").offsetHeight,
+    Go: function () {
+      this.roll.style.left = this.x + 'px';
+      this.roll.style.top = this.y + 'px';
+
+      this.x = this.x + (this.statusX ? -1 : 1)
+      if (this.x < 0) { this.statusX = 0 }
+      if (this.x > this.winW) { this.statusX = 1 }
+
+      this.y = this.y + (this.statusY ? -1 : 1)
+      if (this.y < 0) { this.statusY = 0 }
+      if (this.y > this.winH) { this.statusY = 1 }
+    }
+  }
+  var interval = setInterval("ggRoll.Go()", ggRoll.speed);
+  ggRoll.roll.onmouseover = function () { clearInterval(interval) };
+  ggRoll.roll.onmouseout = function () { interval = setInterval("ggRoll.Go()", ggRoll.speed) };
+
+</script>
 
 </body>
+</div>
 </html>
